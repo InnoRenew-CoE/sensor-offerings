@@ -1,127 +1,228 @@
 <script lang="ts">
+    import Navigation from "$lib/Navigation.svelte";
     import SensorCard from "$lib/SensorCard.svelte";
-    import SvgIcon from "$lib/SvgIcon.svelte";
-    import { fly } from "svelte/transition";
-    let hoveringLogo = $state(false);
+    import { fade } from "svelte/transition";
+
+    let scrollY = $state(0);
 </script>
 
-<header class="flex gap-3 items-stretch justify-center py-5 sticky top-0 left-0 right-0 z-50 text-nowrap whitespace-nowrap">
-    <a target="_blank" href="https://innorenew.eu">
-        <div class="flex gap-5 items-center" onmouseenter={() => (hoveringLogo = true)} onmouseleave={() => (hoveringLogo = false)}>
-            <div class="p-1 bg-primary/30 backdrop-blur-2xl rounded-full size-11">
-                <img src="logo.svg" alt="logo-innorenew" class="w-full" />
-            </div>
-            {#if hoveringLogo}
-                <div in:fly class="flex gap-2 font-departure text-xs text-indigo-500">
-                    <SvgIcon src="./link.svg" class="bg-indigo-500 size-4" />
-                    by InnoRenew
-                </div>
-            {/if}
-        </div>
-    </a>
-    <div class="w-fit text-white flex items-center p-1 rounded-full bg-black/85 backdrop-blur-lg border border-white/20 shadow-lg">
-        <ul class="flex gap-0.5">
-            <a href="#iaq" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-l-full cursor-pointer transition-all duration-200 font-medium">Indoor Air Quality</a>
-            <a href="#sound" class="bg-white/10 hover:bg-white/20 px-4 py-1 cursor-pointer transition-all duration-200 font-medium">Sound sensors</a>
-            <a href="#mht" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-r-full cursor-pointer transition-all duration-200 font-medium">Wood sensors</a>
-        </ul>
+<svelte:window bind:scrollY />
+<Navigation />
+{#if scrollY >= 100}
+    <div class="hidden sm:sticky cursor-pointer top-24 w-min m-auto text-nowrap z-50" onclick={() => (scrollY = 0)} in:fade out:fade>
+        <div class="backdrop-blur bg-black/85 hadow-lg rounded-full text-white flex items-center justify-center py-1 px-5">Scroll to top</div>
     </div>
-    <div class="flex items-center text-white bg-primary/80 backdrop-blur-2xl rounded-full w-min hover:bg-black/50">
-        <a href="mailto:aleksandar.tosic@innorenew.eu" class="flex items-center gap-3 px-4 py-2 rounded-r-full cursor-pointer transition-all duration-200 font-medium">
-            <SvgIcon src="./contact.svg" class="bg-white size-4" />
-            Contact
+{/if}
+<div class="-mt-25 p-10 sm:p-30 py-40 bg-white" id="home">
+    <div class="text-2xl text-indigo-500 font-departure">Sensors for Building Monitoring</div>
+    <p class="text-lg w-full sm:w-[80%] py-10 px-5 text-gray-700">
+        Monitor your building like never before. Our service connects a variety of sensors—available directly from our site—and integrates seamlessly with a powerful data store, giving you real-time insights and actionable data to optimize building performance.
+    </p>
+
+    <div class="grid gap-5 py-5">
+        <div class="h-0.5 bg-primary/20"></div>
+        <a target="_blank" href="https://innorenew.eu" class="flex gap-5 items-center justify-center text-primary hover:text-indigo-500">
+            <div class="flex gap-5 items-center">
+                <div>
+                    <div class="backdrop-blur bg-primary/85 border shadow-lg rounded-full text-white flex items-center justify-center size-20">
+                        <img src="logo.svg" alt="logo-innorenew" class="w-full" />
+                    </div>
+                </div>
+            </div>
+            <div class="text-2xl font-departure text-center">brought to You by InnoRenew</div>
         </a>
     </div>
-</header>
-<div class="-mt-25 p-10 py-40 bg-white">
-    <div class="text-2xl text-indigo-500">Yada Yada helth build</div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus perferendis velit aliquid perspiciatis itaque dolor consequatur exercitationem ullam rerum nemo iusto praesentium nobis, id temporibus, molestias saepe similique incidunt mollitia?
-    <br />Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus perferendis velit aliquid perspiciatis itaque dolor consequatur exercitationem ullam rerum nemo iusto praesentium nobis, id temporibus, molestias saepe similique incidunt mollitia?
-    <br />Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus perferendis velit aliquid perspiciatis itaque dolor consequatur exercitationem ullam rerum nemo iusto praesentium nobis, id temporibus, molestias saepe similique incidunt mollitia?
-    <div class="py-5">
-        <div class="h-0.5 bg-primary"></div>
-    </div>
-    <div class="text-2xl text-primary font-departure text-center">Wimpity wompity get me the text</div>
 </div>
 <div class="flex items-center justify-center">
     <div class="w-full flex flex-col gap-5 items-center justify-center">
-        <span id="iaq" class="font-departure text-xl text-left w-[90%] pt-7.5">Indoor Air Quality sensor</span>
-        <div class="py-5 grid gap-5 bg-black w-full">
-            <div class="m-auto w-[80%] flex items-center justify-center">
-                <SensorCard file="iaq" class="rounded-xl">
-                    <div class=" h-full p-3 text-white">
-                        <span class="font-departure text-[#8CE4FF]">Best for:</span>
-                        <ul class="list-disc pl-10">
-                            <li>a</li>
-                            <li>b</li>
-                            <li>c</li>
-                            <li>d</li>
-                        </ul>
-                        <br />
-                        <span class="font-departure text-[#8CE4FF]">Description:</span>
-                        <div class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci accusantium delectus ipsum minima illum recusandae, cupiditate repudiandae! Odio neque provident animi incidunt commodi tempore, minus molestiae est nam quidem.</div>
-                    </div>
-                </SensorCard>
+        <!-- IAQ -->
+        <div>
+            <div class="py-5 grid gap-5 bg-[#8ABEB9] w-full">
+                <span id="iaq" class="text-white font-departure text-xl text-left m-auto w-[90%] pt-24">Indoor Air Quality sensor</span>
+                <div class="m-auto w-[80%] flex items-center justify-center">
+                    <SensorCard fileLeft="iaq-transparent.png" fileRight="iaq.png" class="rounded-xl ">
+                        <div class=" h-full p-3 text-white flex flex-wrap gap-5">
+                            <div>
+                                <span class="font-departure text-[#48486F]">Supported Indicators:</span>
+                                <ul class="list-disc pl-8 pt-3 space-y-1 text-white">
+                                    <li>Carbon dioxide (CO₂)</li>
+                                    <li>Volatile organic compounds (VOC)</li>
+                                    <li>Nitric Oxide (NOx)</li>
+                                    <li>Formaldehyde (HCHO)</li>
+                                    <li>Particulate Matter (PM1, PM2.5, PM4, PM10)</li>
+                                    <li>Temperature</li>
+                                    <li>Humidity</li>
+                                    <li>Luminance</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="font-departure text-[#48486F]">Short Description:</span>
+                                <div class="p-2">State-of-the-art wireless sensor measuring key indoor environmental factors. Powered by high-precision Sensirion sensors, it helps study how air quality affects health, comfort, and productivity, especially in workplaces.</div>
+                            </div>
+                        </div>
+                    </SensorCard>
+                </div>
+            </div>
+
+            <div class="p-6 min-h-[30vh] w-[80%] m-auto">
+                <span class="font-departure text-primary text-xl">Why pick iaq?</span>
+                <div class="mx-auto bg-white rounded-xl">
+                    <h2 class="text-2xl font-bold mb-4">Indoor Air Quality (IAQ) Sensor</h2>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Our Indoor Air Quality (IAQ) sensor is a state-of-the-art wireless device designed to monitor and analyze key environmental parameters that impact health, comfort, and productivity in indoor spaces. Equipped with high- precision sensors from Sensirion, a leading manufacturer
+                        of quality surface-mount devices (SMD). It is an invaluable tool for research into the dynamics of indoor air quality, particularly in working environments, where it helps assess the relationship between air quality and employee health and performance.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Additionally, it plays a critical role in studying the impact of modern building materials—especially renewable and sustainable materials like wood—on indoor air quality, making it ideal for new wooden public buildings and research institutes experimenting with innovative
+                        construction materials. While our primary clients include public institutions and research facilities, the sensor is also well-suited for private homes seeking to optimize indoor environments.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-6">By providing precise, real-time data, our IAQ sensor empowers clients to make informed decisions that enhance indoor air quality, promote well-being, and support sustainable building practices.</p>
+                </div>
             </div>
         </div>
 
-        <div class="pb-20 min-h-[30vh]">
-            <span class="font-departure text-primary text-xl">Yada yada why pick iaq?</span>
-            <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem quo iusto nobis, perspiciatis incidunt maiores recusandae hic ab omnis exercitationem praesentium corrupti minima laudantium voluptatem officia sequi eveniet architecto numquam?</div>
-        </div>
+        <!-- Sound -->
+        <div>
+            <div class="py-5 grid gap-5 bg-[#318AFC90] w-full">
+                <span id="sound" class="text-white m-auto font-departure text-xl text-left w-[90%] pt-24">Sound sensor</span>
+                <div class="m-auto w-[80%] flex items-center justify-center">
+                    <SensorCard fileLeft="sound-transparent.png" fileRight="sound.png" class="rounded-xl ">
+                        <div class=" h-full p-3 text-white flex flex-wrap">
+                            <div>
+                                <span class="font-departure text-[#318afc]">Best for:</span>
+                                <ul class="list-disc pl-6 space-y-2 pt-2">
+                                    <li>Workplace noise monitoring to study stress and productivity</li>
+                                    <li>Urban noise measurement for concerts, events, and city planning</li>
+                                    <li>Indoor environmental research on sound exposure</li>
+                                    <li>Privacy-conscious noise monitoring with on-device AI classification</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="font-departure text-[#318afc]">Description:</span>
+                                <div class="p-3">Wireless sensors measuring indoor/outdoor noise. One tracks decibels, the other adds on-device AI audio classification with privacy. Useful for workplace studies and urban noise monitoring.</div>
+                            </div>
+                        </div>
+                    </SensorCard>
+                </div>
+            </div>
 
-        <span id="sound" class="font-departure text-xl text-left w-[90%] pt-7.5">Sound sensor</span>
-        <div class="py-5 grid gap-5 bg-black w-full">
-            <div class="m-auto w-[80%] flex items-center justify-center">
-                <SensorCard file="sound" class="rounded-xl">
-                    <div class=" h-full p-3 text-white">
-                        <span class="font-departure text-[#8CE4FF]">Best for:</span>
-                        <ul class="list-disc pl-10">
-                            <li>a</li>
-                            <li>b</li>
-                            <li>c</li>
-                            <li>d</li>
-                        </ul>
-                        <br />
-                        <span class="font-departure text-[#8CE4FF]">Description:</span>
-                        <div class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci accusantium delectus ipsum minima illum recusandae, cupiditate repudiandae! Odio neque provident animi incidunt commodi tempore, minus molestiae est nam quidem.</div>
-                    </div>
-                </SensorCard>
+            <div class="p-6 min-h-[30vh] w-[80%] m-auto">
+                <span class="font-departure text-primary text-xl">Why pick SPL?</span>
+                <div class="mx-auto bg-white rounded-xl">
+                    <h2 class="text-2xl font-bold mb-4">Sound Pressure Level (SPL) Sensors</h2>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Our Sound Pressure Level (SPL) sensors are advanced, calibrated devices designed to measure and analyze noise levels in both indoor and outdoor environments. Available in two variants, these wireless sensors cater to a wide range of applications.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        The first variant measures decibel levels alone, providing precise noise monitoring where sound pressure is the primary concern. The second includes an omnidirectional microphone that activates above 80 dB, capturing audio recordings processed on the device. Using Fast
+                        Fourier Transform (FFT), recordings are converted into a frequency spectrum for AI-driven noise source classification. Privacy is ensured—recordings never leave the device and are destroyed after classification.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Indoors, SPL sensors help study workplace environments and their impact on stress and productivity. Outdoors, they monitor urban noise during events like concerts, helping cities mitigate negative effects on residents. With customizable casings for indoor and outdoor use,
+                        these sensors offer a versatile, privacy-conscious solution for noise monitoring and analysis.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="pb-20 min-h-[30vh]">
-            <span class="font-departure text-primary text-xl">Yada yada why pick Sound?</span>
-            <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem quo iusto nobis, perspiciatis incidunt maiores recusandae hic ab omnis exercitationem praesentium corrupti minima laudantium voluptatem officia sequi eveniet architecto numquam?</div>
-        </div>
+        <!-- MHT -->
+        <div>
+            <div class="py-5 grid gap-5 bg-[#FF266AA0] w-full">
+                <span id="mht" class="m-auto text-white font-departure text-xl text-left w-[90%] pt-24">Wood Moisture Content sensor</span>
+                <div class="m-auto w-[80%] flex items-center justify-center">
+                    <SensorCard fileLeft="mht-transparent.png" fileRight="mht.png" class="rounded-xl ">
+                        <div class=" h-full p-3 text-white flex flex-wrap">
+                            <div>
+                                <span class="font-departure text-red-800">Best for:</span>
+                                <ul class="list-disc pl-6 space-y-1 pt-1">
+                                    <li>Monitoring moisture levels in timber constructions</li>
+                                    <li>Preventing mold, rot, and structural damage in wooden buildings</li>
+                                    <li>Research on sustainable and innovative building materials</li>
+                                    <li>Ensuring long-term durability and performance of timber structures</li>
+                                </ul>
+                            </div>
 
-        <span id="mht" class="font-departure text-xl text-left w-[90%] pt-7.5">Wood Moisture Content sensor</span>
-        <div class="py-5 grid gap-5 bg-black w-full">
-            <div class="m-auto w-[80%] flex items-center justify-center">
-                <SensorCard file="mht" class="rounded-xl">
-                    <div class=" h-full p-3 text-white">
-                        <span class="font-departure text-[#8CE4FF]">Best for:</span>
-                        <ul class="list-disc pl-10">
-                            <li>a</li>
-                            <li>b</li>
-                            <li>c</li>
-                            <li>d</li>
-                        </ul>
-                        <br />
-                        <span class="font-departure text-[#8CE4FF]">Description:</span>
-                        <div class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci accusantium delectus ipsum minima illum recusandae, cupiditate repudiandae! Odio neque provident animi incidunt commodi tempore, minus molestiae est nam quidem.</div>
-                    </div>
-                </SensorCard>
+                            <div>
+                                <span class="font-departure text-red-800">Description:</span>
+                                <div class="p-3">Sensors installed directly in timber to track moisture levels, combined with ambient RH/T sensors. They help prevent mold, rot, and structural issues, supporting timber construction and sustainable building research.</div>
+                            </div>
+                        </div>
+                    </SensorCard>
+                </div>
+            </div>
+
+            <div class="p-6 min-h-[30vh] w-[80%] m-auto">
+                <span class="font-departure text-primary text-xl">Why pick MC?</span>
+                <div class="mx-auto bg-white rounded-xl">
+                    <h2 class="text-2xl font-bold mb-4">Moisture Content (MC) Sensors</h2>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Our Moisture Content (MC) sensors are specialized devices designed to provide critical insights into the moisture dynamics within timber constructions, ensuring the longevity and structural integrity of wooden buildings. These sensors support both wired and wireless
+                        communication, with wired being preferred due to limited access after installation.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Installed directly into the wood by screwing them into the material, the sensors measure moisture inside the timber itself—offering far more relevant data than standard relative humidity (RH) and temperature (T) sensors alone. To achieve comprehensive monitoring, we typically
+                        install these sensors within the building envelope, complemented by three additional RH/T sensors that track surrounding air conditions.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed mb-6">
+                        This dual-layer system helps analyze the interaction between wood moisture and ambient humidity, providing essential data for preventing mold, rot, and structural degradation. Ideal for timber buildings and research on sustainable materials, our MC sensors support architects,
+                        builders, and researchers in improving durability and performance.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="pb-20 min-h-[30vh]">
-            <span class="font-departure text-primary text-xl">Yada yada why pick mht?</span>
-            <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem quo iusto nobis, perspiciatis incidunt maiores recusandae hic ab omnis exercitationem praesentium corrupti minima laudantium voluptatem officia sequi eveniet architecto numquam?</div>
+        <!-- Grafana -->
+        <div>
+            <div class="py-5 grid gap-5 bg-gray-200 w-full">
+                <span id="grafana" class="text-slate-700 font-departure text-xl text-left m-auto w-[90%] pt-24">Data Visualisation - Grafana Dashboard</span>
+                <div class="m-auto w-[80%] flex items-center justify-center">
+                    <SensorCard fileLeft="grafana-test.png" fileRight="sketch.png" class="shadow bg-white rounded-xl ">
+                        <div class=" h-full p-3 text-slate-700 flex flex-wrap">
+                            <div>
+                                <span class="font-departure text-[#48486F]">Data export:</span>
+                                <ul class="list-disc pl-8 pt-3 space-y-1">
+                                    <li>CSV</li>
+                                    <li>JSON</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <span class="font-departure text-[#48486F]">Short Description:</span>
+                                <div class="p-2">
+                                    All sensors work with the software system, which combines open-source and custom solutions, using a high-performance time-series database for fast, interval-based queries.
+                                    <div class="border border-green-600/85 bg-green-600/10 w-min py-1 px-2 text-nowrap rounded-full text-sm text-green-600">Open Source</div>
+                                </div>
+                            </div>
+                        </div>
+                    </SensorCard>
+                </div>
+            </div>
+            <div class="p-6 min-h-[30vh] w-[80%] m-auto">
+                <span class="font-departure text-primary text-xl">Why the dashboard?</span>
+                <div class="mx-auto p-6 bg-white rounded-xl">
+                    <h2 class="text-2xl font-bold mb-4">Software Integration</h2>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">All sensors integrate with the provided software system, a robust combination of open-source solutions and custom code. A high-performance time-series database stores measurements and supports fast interval-based queries.</p>
+
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        For visualizations, Grafana renders graphical dashboards of the building’s state. The software supports multiple users, permission schemes, a custom alert system (email or popular IM services), and custom floor plan visualizations based on architect-provided layouts.
+                    </p>
+
+                    <p class="text-slate-700 leading-relaxed">For advanced analysis, data can be exported at any time interval in standard formats such as CSV and JSON.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <footer class="bg-black p-10 text-white">
-    fuck u
     <div>Built by InnoRenew CoE</div>
 </footer>

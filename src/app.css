@@ -22,6 +22,16 @@
     --color-grid-color: #43334c10;
 }
 
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
 body {
     @apply bg-white;
     /* dark:bg-[#222831] */
