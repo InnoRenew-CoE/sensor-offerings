@@ -1,2 +1,35 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
+
+@font-face {
+    font-family: "departure-mono";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src:
+        url("/fonts/DepartureMono/DepartureMono-Regular.woff2") format("woff2"),
+        url("/fonts/DepartureMono/DepartureMono-Regular.woff") format("woff");
+    font-named-instance: "Regular";
+}
+
+@theme {
+    --font-departure: "departure-mono";
+
+    --color-primary: #63a361;
+    --color-background: #eeeeee;
+    --color-light-background: #fbfbfb;
+
+    --color-grid-color: #43334c10;
+}
+
+body {
+    @apply bg-white;
+    /* dark:bg-[#222831] */
+    /*background-image:*/
+    /*linear-gradient(to right, var(--color-grid-color) 1px, transparent 1px),*/
+    /*linear-gradient(to bottom, var(--color-grid-color) 1px, transparent 1px);*/
+    /*background-size: 20px 20px;*/
+}
+html {
+    scroll-behavior: smooth;
+}
