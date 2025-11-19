@@ -5,7 +5,7 @@
     let sliderPosition = $state(50);
     let isDragging = false;
     let containerRef: HTMLDivElement;
-    const { fileLeft, fileRight, class: className }: { fileLeft: string; fileRight: string; class: string } = $props();
+    const { fileLeft, fileRight, class: className, leftClass = "", rightClass = "" }: { fileLeft: string; fileRight: string; class: string; leftClass?: string; rightClass?: string } = $props();
 
     function handleMove(clientX: number) {
         console.log("move");
@@ -46,11 +46,11 @@
     <div class={twMerge("w-full overflow-hidden", className)} on:mousemove={handleMouseMove} on:mouseup={handleMouseUp} on:touchend={handleMouseUp}>
         <div bind:this={containerRef} class="group relative w-full aspect-video select-none" on:mousedown={handleMouseDown} on:touchstart={handleMouseDown} on:touchmove={handleTouchMove}>
             <div class="transition-all duration-500 group-hover:transition-none absolute inset-0">
-                <img src="./photos/{fileRight}" alt="After" class="h-full w-full object-cover" />
+                <img src="./photos/{fileRight}" alt="After" class={twMerge("h-full w-full object-cover", rightClass)} />
             </div>
 
             <div class="transition-all duration-500 group-hover:transition-none absolute inset-0" style="clip-path: inset(0 {100 - sliderPosition}% 0 0);">
-                <img src="./photos/{fileLeft}   " alt="After" class="w-full h-full object-cover" />
+                <img src="./photos/{fileLeft}   " alt="After" class={twMerge("h-full w-full object-cover", leftClass)} />
             </div>
 
             <div class="transition-all duration-500 group-hover:transition-none absolute top-0 bottom-0 w-1 bg-white" style="left: {sliderPosition}%;">

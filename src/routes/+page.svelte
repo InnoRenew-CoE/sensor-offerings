@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-2xl font-departure text-center">brought to You by InnoRenew</div>
+            <div class="text-2xl font-departure text-center">brought to You by InnoRenew CoE</div>
         </a>
     </div>
 </div>
@@ -185,7 +185,7 @@
             <div class="py-5 grid gap-5 bg-gray-200 w-full">
                 <span id="grafana" class="text-slate-700 font-departure text-xl text-left m-auto w-[90%] pt-24">Data Visualisation - Grafana Dashboard</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
-                    <SensorCard fileLeft="grafana-test.png" fileRight="sketch.png" class="shadow bg-white rounded-xl ">
+                    <SensorCard fileLeft="grafana-test.png" fileRight="sketch.svg" class="shadow bg-white rounded-xl " rightClass="object-contain">
                         <div class=" h-full p-3 text-slate-700 flex flex-wrap">
                             <div>
                                 <span class="font-departure text-[#48486F]">Data export:</span>
@@ -223,6 +223,13 @@
         </div>
     </div>
 </div>
-<footer class="bg-black p-10 text-white">
-    <div>Built by InnoRenew CoE</div>
+<footer class="bg-black p-5 text-white grid gap-5 items-center justify-center font-departure">
+    <a target="_blank" href="https://innorenew.eu">
+        <div class="flex items-center justify-center">
+            <div class="backdrop-blur bg-primary/85 border shadow-lg rounded-full text-white flex items-center justify-center size-20">
+                <img src="logo.svg" alt="logo-innorenew" class="w-full" />
+            </div>
+        </div>
+        <div>Built by InnoRenew CoE</div>
+    </a>
 </footer>
