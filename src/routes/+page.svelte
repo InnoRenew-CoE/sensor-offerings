@@ -32,7 +32,7 @@
 <div class="flex items-center justify-center">
     <div class="w-full flex flex-col gap-5 items-center justify-center">
         <!-- IAQ -->
-        <div>
+        <div class="w-full">
             <div class="py-5 grid gap-5 bg-[#8ABEB9] w-full">
                 <span id="iaq" class="text-white font-departure text-xl text-left m-auto w-[90%] pt-24">Indoor Air Quality sensor</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
@@ -81,7 +81,7 @@
         </div>
 
         <!-- Sound -->
-        <div>
+        <div class="w-full">
             <div class="py-5 grid gap-5 bg-[#318AFC90] w-full">
                 <span id="sound" class="text-white m-auto font-departure text-xl text-left w-[90%] pt-24">Sound sensor</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
@@ -127,8 +127,36 @@
             </div>
         </div>
 
+        <!-- Outdoor Sound -->
+        <div class="w-full">
+            <div class="py-5 grid gap-5 bg-[#00316F5a] w-full">
+                <span id="outdoor" class="text-white m-auto font-departure text-xl text-left w-[90%] pt-24">Outdoor Sound sensor</span>
+                <div class="m-auto w-[80%] flex items-center justify-center">
+                    <SensorCard fileLeft="swarm-transparent.png" fileRight="swarm.png" class="rounded-xl ">
+                        <div class=" h-full p-3 text-white flex flex-wrap lg:grid">
+                            <div>
+                                <span class="font-departure text-[#00316F]">Best for:</span>
+                                <ul class="list-disc pl-8 pt-3 space-y-1 text-white">
+                                    <li>TODO</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="font-departure text-[#00316F]">Description:</span>
+                                <div class="p-3">TODO</div>
+                            </div>
+                        </div>
+                    </SensorCard>
+                </div>
+            </div>
+
+            <div class="p-6 min-h-[30vh] w-[80%] m-auto">
+                <span class="font-departure text-primary text-xl">Why pick outdoor SPL?</span>
+                <div class="mx-auto bg-white rounded-xl">TODO</div>
+            </div>
+        </div>
+
         <!-- MHT -->
-        <div>
+        <div class="w-full">
             <div class="py-5 grid gap-5 bg-[#FFC4C4F0] w-full">
                 <span id="mht" class="m-auto text-white font-departure text-xl text-left w-[90%] pt-24">Wood Moisture Content sensor</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
@@ -177,7 +205,7 @@
         </div>
 
         <!-- Grafana -->
-        <div>
+        <div class="w-full">
             <div class="py-5 grid gap-5 bg-gray-200 w-full">
                 <span id="grafana" class="text-slate-700 font-departure text-xl text-left m-auto w-[90%] pt-24">Data Visualisation - Grafana Dashboard</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
