@@ -53,7 +53,7 @@
                 <img src="./photos/{fileLeft}   " alt="After" class={twMerge("h-full w-full object-cover", leftClass)} />
             </div>
 
-            <div class="transition-all duration-500 group-hover:transition-none absolute top-0 bottom-0 w-1 bg-white" style="left: {sliderPosition}%;">
+            <div class="transition-all duration-500 group-hover:transition-none absolute top-0 bottom-0 w-1 bg-white rounded-full" style="left: {sliderPosition}%;">
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
                     <svg width="70%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 7L4 12L9 17M15 7L20 12L15 17" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />

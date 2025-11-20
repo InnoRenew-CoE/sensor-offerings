@@ -9,7 +9,7 @@
 <svelte:window bind:scrollY />
 <Navigation />
 {#if scrollY >= 100}
-    <div class="hidden sm:sticky cursor-pointer top-24 w-min m-auto text-nowrap z-50" onclick={() => (scrollY = 0)} in:fade out:fade>
+    <div class="hidden sm:block sm:sticky cursor-pointer top-24 w-min m-auto text-nowrap z-50" onclick={() => (scrollY = 0)} in:fade out:fade>
         <div class="backdrop-blur bg-black/85 hadow-lg rounded-full text-white flex items-center justify-center py-1 px-5">Scroll to top</div>
     </div>
 {/if}
@@ -19,17 +19,13 @@
         Monitor your building like never before. Our service connects a variety of sensors—available directly from our site—and integrates seamlessly with a powerful data store, giving you real-time insights and actionable data to optimize building performance.
     </p>
 
-    <div class="grid gap-5 py-5">
-        <div class="h-0.5 bg-primary/20"></div>
-        <a target="_blank" href="https://innorenew.eu" class="flex gap-5 items-center justify-center text-primary hover:text-indigo-500">
-            <div class="flex gap-5 items-center">
-                <div>
-                    <div class="backdrop-blur bg-primary/85 border shadow-lg rounded-full text-white flex items-center justify-center size-20">
-                        <img src="logo.svg" alt="logo-innorenew" class="w-full" />
-                    </div>
-                </div>
+    <div class="border-dashed h-0.5 border-primary/50 border"></div>
+    <div class="grid gap-5 py-5 font-departure items-center justify-center">
+        <a target="_blank" href="https://innorenew.eu" class="grid gap-5 text-center">
+            <div class="flex items-center justify-center w-[90%] max-w-[300px]">
+                <img src="logo.png" alt="logo-innorenew" class="w-full" />
             </div>
-            <div class="text-2xl font-departure text-center">brought to You by InnoRenew CoE</div>
+            <div>Built by InnoRenew CoE</div>
         </a>
     </div>
 </div>
@@ -133,7 +129,7 @@
 
         <!-- MHT -->
         <div>
-            <div class="py-5 grid gap-5 bg-[#FF266AA0] w-full">
+            <div class="py-5 grid gap-5 bg-[#FFC4C4F0] w-full">
                 <span id="mht" class="m-auto text-white font-departure text-xl text-left w-[90%] pt-24">Wood Moisture Content sensor</span>
                 <div class="m-auto w-[80%] flex items-center justify-center">
                     <SensorCard fileLeft="mht-transparent.png" fileRight="mht.png" class="rounded-xl ">
@@ -223,12 +219,10 @@
         </div>
     </div>
 </div>
-<footer class="bg-black p-5 text-white grid gap-5 items-center justify-center font-departure">
-    <a target="_blank" href="https://innorenew.eu">
-        <div class="flex items-center justify-center">
-            <div class="backdrop-blur bg-primary/85 border shadow-lg rounded-full text-white flex items-center justify-center size-20">
-                <img src="logo.svg" alt="logo-innorenew" class="w-full" />
-            </div>
+<footer class="bg-white p-5 grid gap-5 items-center justify-center font-departure">
+    <a target="_blank" href="https://innorenew.eu" class="grid gap-5 text-center">
+        <div class="flex items-center justify-center w-[90%] max-w-[300px]">
+            <img src="logo.png" alt="logo-innorenew" class="w-full" />
         </div>
         <div>Built by InnoRenew CoE</div>
     </a>
