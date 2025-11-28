@@ -25,7 +25,7 @@
             <a href="#grafana" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none sm:rounded-r-full cursor-pointer transition-all duration-200 font-medium">Visualisation</a>
 
             <div class="flex items-stretch pl-5">
-                <a class="bg-amber-400/20 text-amber-400 border-amber-400/20 hover:border-amber-400/60 border hover:text-amber-200 hover:bg-amber-400/50 px-4 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium">Resources</a>
+                <a href="#resources" class="bg-amber-400/20 text-amber-400 border-amber-400/20 hover:border-amber-400/60 border hover:text-amber-200 hover:bg-amber-400/50 px-4 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium">Resources</a>
             </div>
         </div>
 

@@ -263,6 +263,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Resources -->
+        <div class="w-full">
+            <div class="py-5 pb-32 grid gap-5 bg-[#007E6E] w-full text-white">
+                <span id="resources" class=" font-departure text-xl text-left m-auto w-[90%] pt-24">Resources</span>
+                <div class="m-auto w-[80%]">
+                    <ul class="w-full space-y-5">
+                        {#each { length: 1 } as _}
+                            <a target="_blank" href="./user_manual.pdf" class="flex gap-4 items-start bg-white/5 p-2 rounded-xl group hover:bg-white/30">
+                                <div class="grid gap-3 w-min font-departure border rounded-lg p-3 text-sm border-white/10 group-hover:bg-white/10 group-hover:shadow-lg">
+                                    <img src="./pdf.svg" class="size-10" />
+                                    <div>User Manual</div>
+                                </div>
+                                <div class="text-shadow-md">This file includes user manuals for all our sensors, along with installation guidance, support information, and credential assistance.</div>
+                            </a>
+                        {/each}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <footer class="bg-white p-5 grid gap-5 items-center justify-center font-departure">
