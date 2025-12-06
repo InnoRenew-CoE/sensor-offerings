@@ -2,7 +2,28 @@
     import { onMount } from "svelte";
     import SvgIcon from "./SvgIcon.svelte";
 
+    let { language = "en" }: { language?: string } = $props();
     let element: HTMLDivElement | undefined = $state(undefined);
+    let titles: any = {
+        en: {
+            iaq: "Indoor Air Quality",
+            sound: "Sound",
+            outdoor: "Outdoor Sound",
+            wood: "Wood",
+            visualisation: "Visualisation",
+            resources: "Resources",
+            contact: "Contact",
+        },
+        si: {
+            iaq: "Kakovost zraka",
+            sound: "Zvok",
+            outdoor: "Zunanji Zvok",
+            wood: "Les",
+            visualisation: "Vizualizacija",
+            resources: "Viri",
+            contact: "Kontakt",
+        },
+    };
 
     onMount(() => {
         if (element) {
@@ -15,24 +36,32 @@
     });
 </script>
 
-<header class="text-sm flex gap-3 items-stretch justify-center sm:py-5 sticky top-0 left-0 right-0 z-50 text-nowrap whitespace-nowrap bg-black sm:bg-transparent">
+<header class="text-sm flex gap-5 items-stretch justify-center sm:py-5 sticky top-0 left-0 right-0 z-50 text-nowrap whitespace-nowrap bg-black sm:bg-transparent">
     <div class="flex sm:items-stretch gap-3 w-full sm:w-fit text-white p-2 px-3 sm:rounded-full bg-black sm:bg-black/85 backdrop-blur-lg border border-white/20 shadow-xl">
         <div bind:this={element} class="scroll-smooth no-scrollbar transition-all flex gap-0.5 items-center overflow-scroll">
-            <a href="#iaq" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none sm:rounded-l-full cursor-pointer transition-all duration-200 font-medium">Indoor Air Quality</a>
-            <a href="#sound" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none cursor-pointer transition-all duration-200 font-medium">Sound</a>
-            <a href="#outdoor" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none cursor-pointer transition-all duration-200 font-medium">Outdoor Sound</a>
-            <a href="#mht" class="bg-white/10 hover:bg-white/20 px-4 py-1 cursor-pointer transition-all duration-200 font-medium rounded-full sm:rounded-none">Wood</a>
-            <a href="#grafana" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none sm:rounded-r-full cursor-pointer transition-all duration-200 font-medium">Visualisation</a>
+            <a href="#iaq" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none sm:rounded-l-full cursor-pointer transition-all duration-200 font-medium">{titles[language]["iaq"]}</a>
+            <a href="#sound" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none cursor-pointer transition-all duration-200 font-medium">{titles[language]["sound"]}</a>
+            <a href="#outdoor" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none cursor-pointer transition-all duration-200 font-medium">{titles[language]["outdoor"]}</a>
+            <a href="#mht" class="bg-white/10 hover:bg-white/20 px-4 py-1 cursor-pointer transition-all duration-200 font-medium rounded-full sm:rounded-none">{titles[language]["wood"]}</a>
+            <a href="#grafana" class="bg-white/10 hover:bg-white/20 px-4 py-1 rounded-full sm:rounded-none sm:rounded-r-full cursor-pointer transition-all duration-200 font-medium">{titles[language]["visualisation"]}</a>
 
             <div class="flex items-stretch pl-5">
-                <a href="#resources" class="bg-amber-400/20 text-amber-400 border-amber-400/20 hover:border-amber-400/60 border hover:text-amber-200 hover:bg-amber-400/50 px-4 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium">Resources</a>
+                <a href="#resources" class="bg-amber-400/20 text-amber-400 border-amber-400/20 hover:border-amber-400/60 border hover:text-amber-200 hover:bg-amber-400/50 px-4 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium">{titles[language]["resources"]}</a>
             </div>
         </div>
 
         <div class="flex items-start sm:items-center">
             <a href="mailto:coe@innorenew.eu" class="flex gap-3 items-center bg-primary rounded-full py-1 px-3">
                 <SvgIcon src="./contact.svg" class="bg-white size-4" />
-                Contact
+                {titles[language]["contact"]}
+            </a>
+        </div>
+
+        <div class="flex items-center justify-center">
+            <a href={language === "en" ? "si/" : "/"}>
+                <div class="bg-black rounded-full size-8 p-2 overflow-hidden">
+                    <img src="{language === 'en' ? 'si' : 'en'}.svg" alt={language} />
+                </div>
             </a>
         </div>
     </div>
